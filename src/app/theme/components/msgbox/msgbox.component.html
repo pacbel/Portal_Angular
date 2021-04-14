@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TENCO Shopping Centers S.A.</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.css"
+    />
+  </head>
+
+  <body>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">{{ titulo }}</h4>
+      <button
+        type="button"
+        class="close"
+        aria-describedby="modal-title"
+        (click)="activeModal.close(false)"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>{{ pergunta }}</strong>
+      </p>
+      <p>
+        {{ mensagem }}
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="activeModal.close(false)"
+      >
+        Não
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="activeModal.close(true)"
+      >
+        Sim
+      </button>
+    </div>
+  </body>
+</html>

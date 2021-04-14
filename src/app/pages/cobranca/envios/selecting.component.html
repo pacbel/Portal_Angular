@@ -1,0 +1,67 @@
+<div fxLayout="column">
+  <div class="flex-p">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+          >
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+          >
+          </mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Sigla">
+        <th mat-header-cell *matHeaderCellDef>Sigla</th>
+        <td mat-cell *matCellDef="let element">{{ element.Sigla }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Contrato">
+        <th mat-header-cell *matHeaderCellDef>Contrato</th>
+        <td mat-cell *matCellDef="let element">{{ element.Contrato }}</td>
+      </ng-container>
+      <ng-container matColumnDef="NomeFantasia">
+        <th mat-header-cell *matHeaderCellDef>Nome Fantasia</th>
+        <td mat-cell *matCellDef="let element">{{ element.NomeFantasia }}</td>
+      </ng-container>
+      <ng-container matColumnDef="DataVencimento">
+        <th mat-header-cell *matHeaderCellDef>Data de Vencimento</th>
+        <td mat-cell *matCellDef="let element">{{ element.DataVencimento }}</td>
+      </ng-container>
+      <ng-container matColumnDef="PassodaRegua">
+        <th mat-header-cell *matHeaderCellDef>Passo da Régua</th>
+        <td mat-cell *matCellDef="let element">{{ element.PassodaRegua }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Titulo">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let element">{{ element.Titulo }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">{{ element.Total }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.Status }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+      ></tr>
+    </table>
+
+    <button mat-raised-button color="primary" class="m-1" (click)="openMsg()">
+      Excluir Selecionados
+    </button>
+  </div>
+</div>
